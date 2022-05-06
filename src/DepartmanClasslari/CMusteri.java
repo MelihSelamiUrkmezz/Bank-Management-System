@@ -17,8 +17,9 @@ public class CMusteri {
     private String Eposta;
     private String kullaniciadi;
     private String sifre;
+    private int temsilciid;
 
-    public CMusteri(int id, String AdSoyad, String TelNo, String TcNo, String Adres, String Eposta, String kullaniciadi, String sifre) {
+    public CMusteri(int id, String AdSoyad, String TelNo, String TcNo, String Adres, String Eposta, String kullaniciadi, String sifre, int temsilciid) {
         this.id = id;
         this.AdSoyad = AdSoyad;
         this.TelNo = TelNo;
@@ -27,6 +28,7 @@ public class CMusteri {
         this.Eposta = Eposta;
         this.kullaniciadi = kullaniciadi;
         this.sifre = sifre;
+        this.temsilciid = temsilciid;
     }
 
     public int getId() {
@@ -92,6 +94,17 @@ public class CMusteri {
     public void setSifre(String sifre) {
         this.sifre = sifre;
     }
+
+    public int getTemsilciid() {
+        return temsilciid;
+    }
+
+    public void setTemsilciid(int temsilciid) {
+        this.temsilciid = temsilciid;
+    }
+  
+
+
        
     
 }

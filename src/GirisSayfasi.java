@@ -68,9 +68,9 @@ public class GirisSayfasi extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
@@ -226,8 +226,8 @@ public class GirisSayfasi extends javax.swing.JFrame {
                     String tcno=res.getString("TcNo");
                     String adres=res.getString("Adres");
                     String email=res.getString("Eposta");
-                    String k2_adi=res.getString("kullaniciadi");
-                    String k2_sifre=res.getString("sifre");
+                    String k2_adi=res.getString("Kullaniciadi");
+                    String k2_sifre=res.getString("Sifre");
                     
                     CMudur mudur=new CMudur(id, AdSoyad, telefon, tcno, adres, email, k2_adi, k_sifre);
                     
@@ -266,10 +266,10 @@ public class GirisSayfasi extends javax.swing.JFrame {
                     String tcno=res.getString("TcNo");
                     String adres=res.getString("Adres");
                     String email=res.getString("Eposta");
-                    String k2_adi=res.getString("kullaniciadi");
-                    String k2_sifre=res.getString("sifre");
-                    
-                    CMusteri musteri=new CMusteri(id, AdSoyad, telefon, tcno, adres, email, k2_adi, k_sifre);
+                    String k2_adi=res.getString("Kullaniciadi");
+                    String k2_sifre=res.getString("Sifre");
+                    int temsilciid=res.getInt("temsilciid");
+                    CMusteri musteri=new CMusteri(id, AdSoyad, telefon, tcno, adres, email, k2_adi, k_sifre,temsilciid);
                     
                     
                     
@@ -306,14 +306,17 @@ public class GirisSayfasi extends javax.swing.JFrame {
                     String tcno=res.getString("TcNo");
                     String adres=res.getString("Adres");
                     String email=res.getString("Eposta");
-                    String k2_adi=res.getString("kullaniciadi");
-                    String k2_sifre=res.getString("sifre");
+                    String k2_adi=res.getString("Kullaniciadi");
+                    String k2_sifre=res.getString("Sifre");
                     
                     CTemsilci temsilci=new CTemsilci(id, AdSoyad, tcno, tcno, adres, email, k2_adi, k_sifre);
                     
                     
-                    l_mesaj.setText("Temsilci girişi başarılı.");
+                   TemsilciSayfasi frame=new TemsilciSayfasi(temsilci);
+                   
+                    setVisible(false);
                     
+                    frame.setVisible(true);
                 }
                 
                 else{
