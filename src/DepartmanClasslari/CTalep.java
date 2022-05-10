@@ -4,13 +4,13 @@ public class CTalep {
     
     private int id;
     private int kullanici_id;
-    private int islem_tipi;
+    private String islem_tipi;
     private int onay;
     private int temsilci_id;
     private int kredi_miktari;
     private int hesap_id;
 
-    public CTalep(int id, int kullanici_id, int islem_tipi, int onay, int temsilci_id, int kredi_miktari, int hesap_id) {
+    public CTalep(int id, int kullanici_id, String islem_tipi, int onay, int temsilci_id, int kredi_miktari, int hesap_id) {
         this.id = id;
         this.kullanici_id = kullanici_id;
         this.islem_tipi = islem_tipi;
@@ -36,11 +36,11 @@ public class CTalep {
         this.kullanici_id = kullanici_id;
     }
 
-    public int getIslem_tipi() {
+    public String getIslem_tipi() {
         return islem_tipi;
     }
 
-    public void setIslem_tipi(int islem_tipi) {
+    public void setIslem_tipi(String islem_tipi) {
         this.islem_tipi = islem_tipi;
     }
 
