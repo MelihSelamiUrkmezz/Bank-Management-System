@@ -63,8 +63,8 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
                 
                int islem_id=res.getInt("islem_id");
                int k_id=res.getInt("kullanici_id");
-               int kaynak=res.getInt("kaynak");
-               int hedef=res.getInt("hedef");
+               String kaynak=res.getString("kaynak");
+               String hedef=res.getString("hedef");
                String islem=res.getString("İslem_tipi");
                int tutar=res.getInt("tutar");
                int kaynak_bakiye=res.getInt("kaynak_bakiye");

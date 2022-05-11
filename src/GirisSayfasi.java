@@ -271,9 +271,13 @@ public class GirisSayfasi extends javax.swing.JFrame {
                     int temsilciid=res.getInt("temsilciid");
                     CMusteri musteri=new CMusteri(id, AdSoyad, telefon, tcno, adres, email, k2_adi, k_sifre,temsilciid);
                     
+                    MusteriSayfasi frame=new MusteriSayfasi(musteri);
+                   
+                    setVisible(false);
+                    
+                    frame.setVisible(true);
                     
                     
-                    l_mesaj.setText("Müşteri girişi başarılı.");
                     
                 }
                 else{

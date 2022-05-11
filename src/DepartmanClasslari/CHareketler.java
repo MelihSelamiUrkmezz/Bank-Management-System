@@ -7,15 +7,15 @@ package DepartmanClasslari;
 public class CHareketler {
       private  int islem_id;
       private  int k_id;
-      private  int kaynak;
-      private  int hedef;
+      private  String kaynak;
+      private  String hedef;
       private  String işlem;
       private  int tutar;
       private  int kaynak_bakiye;
       private  int hedef_bakiye;
       private  String tarih;
 
-    public CHareketler(int islem_id, int k_id, int kaynak, int hedef, String işlem, int tutar, int kaynak_bakiye, int hedef_bakiye, String tarih) {
+    public CHareketler(int islem_id, int k_id,String kaynak,String hedef, String işlem, int tutar, int kaynak_bakiye, int hedef_bakiye, String tarih) {
         this.islem_id = islem_id;
         this.k_id = k_id;
         this.kaynak = kaynak;
@@ -43,19 +43,19 @@ public class CHareketler {
         this.k_id = k_id;
     }
 
-    public int getKaynak() {
+    public String getKaynak() {
         return kaynak;
     }
 
-    public void setKaynak(int kaynak) {
+    public void setKaynak(String kaynak) {
         this.kaynak = kaynak;
     }
 
-    public int getHedef() {
+    public String getHedef() {
         return hedef;
     }
 
-    public void setHedef(int hedef) {
+    public void setHedef(String hedef) {
         this.hedef = hedef;
     }
 
