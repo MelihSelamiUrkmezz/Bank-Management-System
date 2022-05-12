@@ -141,7 +141,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
         try {
             db.sqlquery=db.con.createStatement();
             
-            String sorgu="Select talepler.kullanici_id,islemler.islem_tipi,talepler.id,talepler.onay,talepler.temsilciid,talepler.KrediMiktari,talepler.hesap_id from talepler JOIN islemler ON talepler.islem_tipi=islemler.id";
+            String sorgu="Select talepler.kullanici_id,islemler.islem_tipi,talepler.id,talepler.onay,talepler.temsilciid,talepler.KrediMiktari,talepler.hesap_id,talepler.para_birimi,talepler.faiz_orani from talepler JOIN islemler ON talepler.islem_tipi=islemler.id";
             
             ResultSet res=db.sqlquery.executeQuery(sorgu);
             int temsilciid=0;
@@ -154,8 +154,9 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
                 temsilciid=res.getInt("temsilciid");
                 int kredimiktari=res.getInt("KrediMiktari");
                 int hesap_id=res.getInt("hesap_id");
-                
-                talepler.add(new CTalep(id, kullanici_id, islem_tipi, onay, temsilciid, kredimiktari, hesap_id));       
+                String para_birimi=res.getString("para_birimi");
+                double faiz_orani=res.getDouble("faiz_orani");
+                talepler.add(new CTalep(id, kullanici_id, islem_tipi, onay, temsilciid, kredimiktari, hesap_id,para_birimi,faiz_orani));       
             }
             
             if(!talepler.isEmpty()){
@@ -164,7 +165,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
                     
                     if(temsilciid==temsilci.getId()){
                         
-                        Object[] talepeden={talep.getId(),talep.getKullanici_id(),talep.getTemsilci_id(),talep.getIslem_tipi(),talep.getKredi_miktari(),talep.getHesap_id(),talep.getOnay()};
+                        Object[] talepeden={talep.getId(),talep.getKullanici_id(),talep.getTemsilci_id(),talep.getIslem_tipi(),talep.getKredi_miktari(),talep.getHesap_id(),talep.getPara_birimi(),talep.getOnay(),talep.getFaiz_orani()};
                         
                         model2.addRow(talepeden);
                     }                
@@ -314,6 +315,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(400, 50, 0, 0));
 
         jPanel7.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -716,11 +718,11 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Istek Id", "Kullanıcı Id", "Temsilci Id", "Islem Tipi", "Kredi Miktarı", "Hesap Id", "Onay"
+                "Istek Id", "Kullanıcı Id", "Temsilci Id", "Islem Tipi", "Kredi Miktarı", "Hesap Id", "HParaBirimi", "Onay"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -741,6 +743,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
             talep_tablosu.getColumnModel().getColumn(4).setResizable(false);
             talep_tablosu.getColumnModel().getColumn(5).setResizable(false);
             talep_tablosu.getColumnModel().getColumn(6).setResizable(false);
+            talep_tablosu.getColumnModel().getColumn(7).setResizable(false);
         }
 
         jButton2.setBackground(new java.awt.Color(102, 102, 102));
@@ -1132,7 +1135,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1303,14 +1306,16 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
             int kredi_miktari=(int)model2.getValueAt(row,4);
             System.out.println(kredi_miktari);
             double faiz=0;
-            String sorgu="Select * from krediorani";
+            String sorgu="Select * from talepler where kullanici_id = ?";
             
             try {
-                db.sqlquery=db.con.createStatement();
-                ResultSet res=db.sqlquery.executeQuery(sorgu);
+                db.psqlquery=db.con.prepareStatement(sorgu);
+                db.psqlquery.setInt(1,talep_kid);
+                ResultSet res=db.psqlquery.executeQuery();
+                
                 while(res.next()){
                     
-                     faiz=res.getDouble("kredi_orani");
+                     faiz=res.getDouble("faiz_orani");
                      
                 }
                 

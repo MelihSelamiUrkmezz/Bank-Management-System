@@ -46,6 +46,9 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="bounds" type="java.awt.Rectangle" editor="org.netbeans.beaninfo.editors.RectangleEditor">
+      <Rectangle value="[400, 50, 0, 0]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -67,7 +70,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="jPanel7" max="32767" attributes="0"/>
-          <Component id="jPanel8" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel8" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -971,18 +974,24 @@
                     <Component class="javax.swing.JTable" name="talep_tablosu">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="7" rowCount="0">
+                          <Table columnCount="8" rowCount="0">
                             <Column editable="false" title="Istek Id" type="java.lang.Object"/>
                             <Column editable="false" title="Kullan&#x131;c&#x131; Id" type="java.lang.Object"/>
                             <Column editable="false" title="Temsilci Id" type="java.lang.Object"/>
                             <Column editable="false" title="Islem Tipi" type="java.lang.Object"/>
                             <Column editable="false" title="Kredi Miktar&#x131;" type="java.lang.Object"/>
                             <Column editable="false" title="Hesap Id" type="java.lang.Object"/>
+                            <Column editable="false" title="HParaBirimi" type="java.lang.Object"/>
                             <Column editable="false" title="Onay" type="java.lang.Object"/>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
                             <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                               <Title/>
                               <Editor/>

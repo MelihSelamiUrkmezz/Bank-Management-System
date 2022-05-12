@@ -9,8 +9,10 @@ public class CTalep {
     private int temsilci_id;
     private int kredi_miktari;
     private int hesap_id;
+    private String para_birimi;
+    private double faiz_orani;
 
-    public CTalep(int id, int kullanici_id, String islem_tipi, int onay, int temsilci_id, int kredi_miktari, int hesap_id) {
+    public CTalep(int id, int kullanici_id, String islem_tipi, int onay, int temsilci_id, int kredi_miktari, int hesap_id,String para_birimi,double faiz_orani) {
         this.id = id;
         this.kullanici_id = kullanici_id;
         this.islem_tipi = islem_tipi;
@@ -18,8 +20,27 @@ public class CTalep {
         this.temsilci_id = temsilci_id;
         this.kredi_miktari = kredi_miktari;
         this.hesap_id = hesap_id;
+        this.para_birimi=para_birimi;
+        this.faiz_orani=faiz_orani;
+                
     }
 
+    public double getFaiz_orani() {
+        return faiz_orani;
+    }
+
+    public void setFaiz_orani(double faiz_orani) {
+        this.faiz_orani = faiz_orani;
+    }
+
+    
+    public String getPara_birimi() {
+        return para_birimi;
+    }
+
+    public void setPara_birimi(String para_birimi) {
+        this.para_birimi = para_birimi;
+    }
     public int getId() {
         return id;
     }
