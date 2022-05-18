@@ -38,7 +38,7 @@ Müşteri bazı işlemler için temsilciye talepte bulunması gerekir. Bu talepl
 Projenin Örnek Görselleri
 
 
-![Giriş Panel](giris.png)
+![Giriş Panel](https://github.com/MelihSelamiUrkmezz/BankSystem/blob/master/proje_resimleri/giris.png)
 ![Müdür Paneli](mudur.png)
 ![Temsilci Paneli](temsilci.png)
 ![Müşteri Paneli](musteri.png)
