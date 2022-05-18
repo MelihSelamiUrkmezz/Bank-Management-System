@@ -38,6 +38,11 @@ Müşteri bazı işlemler için temsilciye talepte bulunması gerekir. Bu talepl
 Projenin Örnek Görselleri
 
 
+![Giriş Panel](giris.png)
+![Müdür Paneli](mudur.png)
+![Temsilci Paneli](temsilci.png)
+![Müşteri Paneli](musteri.png)
+
 
 
 
