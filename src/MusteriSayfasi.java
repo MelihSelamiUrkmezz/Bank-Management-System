@@ -4,7 +4,8 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.ResultSet;
-import java.util.Date;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -18,12 +19,16 @@ public class MusteriSayfasi extends javax.swing.JFrame {
 
     public CMusteri musteri;
     Veritabani_Konfigrasyon db=new Veritabani_Konfigrasyon();
+    DefaultTableModel model;
+    DefaultTableModel model2;
     
     public MusteriSayfasi() {
         initComponents();
     }
     public MusteriSayfasi(CMusteri musteri){
         initComponents();
+        model=(DefaultTableModel)islemler.getModel();
+        model2=(DefaultTableModel)taksitler.getModel();
         para_birimlerini_yaz();
         adsoyad.setText(musteri.getAdSoyad());
         telefon.setText(musteri.getTelNo());
@@ -48,10 +53,57 @@ public class MusteriSayfasi extends javax.swing.JFrame {
         jEditorPane1 = new javax.swing.JEditorPane();
         jScrollPane2 = new javax.swing.JScrollPane();
         jEditorPane2 = new javax.swing.JEditorPane();
+        jLabel57 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        islemler = new javax.swing.JTable();
+        jLabel45 = new javax.swing.JLabel();
+        aylar = new javax.swing.JComboBox<>();
+        jButton11 = new javax.swing.JButton();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        jLabel48 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
+        jLabel51 = new javax.swing.JLabel();
+        toplambakiye = new javax.swing.JTextField();
+        aylikborc = new javax.swing.JTextField();
+        toplamborc = new javax.swing.JTextField();
+        hesapadeti = new javax.swing.JTextField();
+        jLabel52 = new javax.swing.JLabel();
+        anaparaaa = new javax.swing.JTextField();
+        faizzzz = new javax.swing.JTextField();
+        jLabel61 = new javax.swing.JLabel();
+        jLabel62 = new javax.swing.JLabel();
+        jButton12 = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        adsoyad = new javax.swing.JTextField();
+        telefon = new javax.swing.JTextField();
+        adres = new javax.swing.JTextField();
+        eposta = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        guncel_sifre = new javax.swing.JPasswordField();
+        yeni_sifre1 = new javax.swing.JPasswordField();
+        yeni_sifre2 = new javax.swing.JPasswordField();
+        jButton5 = new javax.swing.JButton();
+        bilgi_mesaji2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -63,7 +115,6 @@ public class MusteriSayfasi extends javax.swing.JFrame {
         genel_mesaj = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -72,13 +123,31 @@ public class MusteriSayfasi extends javax.swing.JFrame {
         transfer_miktari = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        kredi_no = new javax.swing.JTextField();
-        odeme = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
         para_cinsi = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        taksitler = new javax.swing.JTable();
+        jLabel27 = new javax.swing.JLabel();
+        kredi_no = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        taksit_no = new javax.swing.JTextField();
+        odenecek_tutar = new javax.swing.JTextField();
+        jButton13 = new javax.swing.JButton();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel55 = new javax.swing.JLabel();
+        tutar = new javax.swing.JTextField();
+        jLabel56 = new javax.swing.JLabel();
+        jButton14 = new javax.swing.JButton();
+        jLabel58 = new javax.swing.JLabel();
+        hesap_id = new javax.swing.JTextField();
+        kredimesaji = new javax.swing.JLabel();
+        jButton15 = new javax.swing.JButton();
+        jLabel59 = new javax.swing.JLabel();
+        hesap_id2 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -109,29 +178,6 @@ public class MusteriSayfasi extends javax.swing.JFrame {
         basvuru_mesaji = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         kredihesapismi = new javax.swing.JTextField();
-        jPanel7 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        adsoyad = new javax.swing.JTextField();
-        telefon = new javax.swing.JTextField();
-        adres = new javax.swing.JTextField();
-        eposta = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        guncel_sifre = new javax.swing.JPasswordField();
-        yeni_sifre1 = new javax.swing.JPasswordField();
-        yeni_sifre2 = new javax.swing.JPasswordField();
-        jButton5 = new javax.swing.JButton();
-        bilgi_mesaji2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -145,8 +191,10 @@ public class MusteriSayfasi extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(jEditorPane2);
 
+        jLabel57.setText("jLabel57");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBounds(new java.awt.Rectangle(450, 150, 0, 0));
+        setBounds(new java.awt.Rectangle(450, 50, 0, 0));
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -159,21 +207,398 @@ public class MusteriSayfasi extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(426, 426, 426)
+                .addGap(495, 495, 495)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
 
         jTabbedPane1.setBackground(new java.awt.Color(102, 102, 102));
+
+        jPanel7.setBackground(new java.awt.Color(102, 102, 102));
+
+        islemler.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "İşlem", "Tutar", "Bakiye"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(islemler);
+        if (islemler.getColumnModel().getColumnCount() > 0) {
+            islemler.getColumnModel().getColumn(0).setResizable(false);
+            islemler.getColumnModel().getColumn(1).setResizable(false);
+            islemler.getColumnModel().getColumn(2).setResizable(false);
+        }
+
+        jLabel45.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel45.setText("Aylık Hesap Hareketleri");
+
+        aylar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık" }));
+
+        jButton11.setBackground(new java.awt.Color(102, 102, 102));
+        jButton11.setText("İşlemleri Listele");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        jLabel46.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resimler/money-transfer.png"))); // NOI18N
+
+        jLabel60.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel60.setText("Kullanıcı Hesap Bilgileri");
+
+        jPanel10.setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel47.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel47.setText("Toplam Hesap Bakiyesi:");
+
+        jLabel49.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel49.setText("Aylık Borç Bilgisi:");
+
+        jLabel50.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel50.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel50.setText("Toplam Borç Bilgisi:");
+
+        jLabel51.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel51.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel51.setText("Hesap Adeti:");
+
+        toplambakiye.setEditable(false);
+
+        aylikborc.setEditable(false);
+
+        toplamborc.setEditable(false);
+
+        hesapadeti.setEditable(false);
+
+        jLabel52.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel52.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel52.setText("Aylık Borç'ta Anapara-Faiz Oranı");
+
+        anaparaaa.setEditable(false);
+
+        faizzzz.setEditable(false);
+
+        jLabel61.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel61.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel61.setText("Anapara");
+
+        jLabel62.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel62.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel62.setText("Faiz");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel49)
+                            .addComponent(jLabel47)
+                            .addComponent(jLabel50)
+                            .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(toplamborc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hesapadeti, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(aylikborc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(toplambakiye, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(59, 59, 59))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(anaparaaa, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel61))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(faizzzz, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(43, 43, 43))))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel47)
+                    .addComponent(toplambakiye, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel49)
+                    .addComponent(aylikborc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel50)
+                    .addComponent(toplamborc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel51)
+                    .addComponent(hesapadeti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addComponent(jLabel52)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel61)
+                    .addComponent(jLabel62))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(anaparaaa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(faizzzz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53))
+        );
+
+        jButton12.setBackground(new java.awt.Color(102, 102, 102));
+        jButton12.setText("Bilgileri Göster");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(151, 151, 151)
+                .addComponent(jLabel45)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel46, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(aylar, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(233, 233, 233)
+                                .addComponent(jLabel48)))))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(149, 149, 149))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(jButton12)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel60)
+                .addGap(255, 255, 255))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(jLabel46, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jLabel45)
+                .addGap(21, 21, 21)
+                .addComponent(jLabel60)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(aylar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton12))
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton11)
+                            .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 84, Short.MAX_VALUE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel48)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+
+        jTabbedPane1.addTab("Aylık Özet Görüntüleme", jPanel7);
+
+        jPanel6.setBackground(new java.awt.Color(102, 102, 102));
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel15.setText("Ad Soyad:");
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel16.setText("Telefon:");
+
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel17.setText("Adres:");
+
+        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel18.setText("Eposta:");
+
+        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel19.setText("BİLGİLER");
+
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resimler/information.png"))); // NOI18N
+
+        jButton4.setText("Güncelle");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel21.setText("ŞİFRE DEĞİŞTİRME");
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resimler/password.png"))); // NOI18N
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel23.setText("Lütfen güncel şifrenizi giriniz:");
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel24.setText("Lütfen yeni şifreinizi giriniz:");
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel25.setText("Lütfen yeni şifrenizi tekrar giriniz:");
+
+        jButton5.setText("Değiştir");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        bilgi_mesaji2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        bilgi_mesaji2.setForeground(new java.awt.Color(102, 0, 51));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bilgi_mesaji2, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(172, 172, 172))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel18))
+                .addGap(49, 49, 49)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(adsoyad, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telefon, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(adres, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eposta, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(224, 224, 224)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel25)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(yeni_sifre2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel23))
+                        .addGap(69, 69, 69)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(guncel_sifre, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(yeni_sifre1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(134, 134, 134)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel21)
+                        .addGap(245, 245, 245))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 574, Short.MAX_VALUE)
+                        .addComponent(jLabel22)
+                        .addGap(287, 287, 287))))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(118, 118, 118)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(270, 270, 270))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel22))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(adsoyad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel23)
+                    .addComponent(guncel_sifre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(telefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24)
+                    .addComponent(yeni_sifre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(adres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25)
+                    .addComponent(yeni_sifre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(eposta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
+                .addGap(82, 82, 82)
+                .addComponent(bilgi_mesaji2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+        );
+
+        jTabbedPane1.addTab("Bilgileri Güncelleme ve Şifre Değiştirme", jPanel6);
 
         jPanel4.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -215,8 +640,6 @@ public class MusteriSayfasi extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Hesaplar Arası Para Transferi");
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resimler/credit-card.png"))); // NOI18N
-
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel8.setText("Ana hesap numarasını giriniz:");
 
@@ -236,18 +659,6 @@ public class MusteriSayfasi extends javax.swing.JFrame {
 
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resimler/money.png"))); // NOI18N
 
-        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel27.setText("Kredi Kartı Borcu Ödeme");
-
-        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel28.setText("Kredi numarasını giriniz:");
-
-        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel29.setText("Ödemek istediğiniz tutarı giriniz:");
-
-        jButton6.setBackground(new java.awt.Color(102, 102, 102));
-        jButton6.setText("Borcu Öde");
-
         para_cinsi.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         para_cinsi.setText("Hesap Para Cinsi:");
 
@@ -256,111 +667,89 @@ public class MusteriSayfasi extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(123, 123, 123)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(217, 217, 217))
+            .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(152, 152, 152)
                 .addComponent(jLabel4)
-                .addGap(276, 276, 276)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel26)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addGap(141, 141, 141))
+                .addGap(274, 274, 274))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(miktar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(hesap_no, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(jLabel2))
+                        .addGap(173, 173, 173)
+                        .addComponent(genel_mesaj, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(para_cinsi, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(miktar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(hesap_no, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(para_cinsi, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(159, 159, 159)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
                             .addComponent(jLabel9)
-                            .addComponent(jLabel8))
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(hedef_hesap, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ana_hesap, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
                             .addComponent(jLabel14))
-                        .addGap(18, 18, 18)
-                        .addComponent(transfer_miktari)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel27)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel29)
-                        .addComponent(jLabel28)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(kredi_no, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
-                    .addComponent(odeme))
-                .addContainerGap())
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(173, 173, 173)
-                .addComponent(genel_mesaj, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(74, 74, 74)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(transfer_miktari, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(hedef_hesap, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ana_hesap, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(82, 82, 82)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addGap(51, 51, 51)
                 .addComponent(jButton1)
-                .addGap(93, 93, 93)
+                .addGap(125, 125, 125)
                 .addComponent(jButton2)
-                .addGap(219, 219, 219)
-                .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6)
-                .addGap(93, 93, 93))
+                .addComponent(jButton3)
+                .addGap(259, 259, 259))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel27)
                     .addComponent(jLabel6)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(19, 19, 19)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(jLabel7)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(hesap_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(ana_hesap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel28)
-                            .addComponent(kredi_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(hesap_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel3)
+                                .addComponent(ana_hesap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(miktar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9)
                                     .addComponent(hedef_hesap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel29)
-                                    .addComponent(odeme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel9))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel14)
-                                    .addComponent(transfer_miktari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(transfer_miktari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel14))
+                                .addGap(77, 77, 77)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jButton3)
+                                    .addComponent(jButton2)
+                                    .addComponent(jButton1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(genel_mesaj)
                                 .addGap(23, 23, 23))
@@ -368,19 +757,234 @@ public class MusteriSayfasi extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(para_cinsi)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton1)
-                                    .addComponent(jButton2)
-                                    .addComponent(jButton3)
-                                    .addComponent(jButton6))
-                                .addGap(79, 79, 79))))
+                                .addGap(79, 328, Short.MAX_VALUE))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel26)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
 
-        jTabbedPane1.addTab("Ödeme-Çekme-Transfer İşlemleri", jPanel4);
+        jTabbedPane1.addTab("Çekme-Yatırma-Transfer İşlemleri", jPanel4);
+
+        jPanel8.setBackground(new java.awt.Color(102, 102, 102));
+
+        jLabel29.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel29.setText("KREDİ BORCU ÖDEME");
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resimler/credit-card3.png"))); // NOI18N
+
+        taksitler.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Taksit Numarası", "Anapara", "Faiz", "Gecikme", "Aylık Ödeme"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        taksitler.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                taksitlerMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(taksitler);
+        if (taksitler.getColumnModel().getColumnCount() > 0) {
+            taksitler.getColumnModel().getColumn(0).setResizable(false);
+            taksitler.getColumnModel().getColumn(1).setResizable(false);
+            taksitler.getColumnModel().getColumn(2).setResizable(false);
+            taksitler.getColumnModel().getColumn(3).setResizable(false);
+            taksitler.getColumnModel().getColumn(4).setResizable(false);
+        }
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel27.setText("Ödemek istediğiniz kredi numarasını giriniz:");
+
+        jButton6.setBackground(new java.awt.Color(102, 102, 102));
+        jButton6.setText("Taksitleri Listele");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel28.setText("Taksit Numarası:");
+
+        jLabel53.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel53.setText("Ödenecek Tutar:");
+
+        taksit_no.setEditable(false);
+
+        odenecek_tutar.setEditable(false);
+
+        jButton13.setBackground(new java.awt.Color(102, 102, 102));
+        jButton13.setText("Onay");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+
+        jLabel54.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel54.setText("TÜM KREDİ BORCUNU ÖDEME");
+
+        jLabel55.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel55.setText("Ödenecek Tutar:");
+
+        tutar.setEditable(false);
+
+        jLabel56.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jLabel56.setText("TEK TAKSİT ÖDEME");
+
+        jButton14.setBackground(new java.awt.Color(102, 102, 102));
+        jButton14.setText("Onay");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+
+        jLabel58.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel58.setText("Ödeme Hesap Id'si:");
+
+        kredimesaji.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+
+        jButton15.setBackground(new java.awt.Color(102, 102, 102));
+        jButton15.setText("Hesapla");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+
+        jLabel59.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel59.setText("Ödeme Hesap Id'si:");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton6)
+                                    .addComponent(jLabel27))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(kredi_no)))
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jButton13)
+                                            .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(hesap_id, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(odenecek_tutar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                                        .addComponent(jButton15)
+                                        .addGap(63, 63, 63)
+                                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(hesap_id2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(kredimesaji, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                                .addGap(37, 37, 37)
+                                .addComponent(jLabel56)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel54)
+                                .addGap(32, 32, 32))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(taksit_no, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(58, 58, 58)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addComponent(jLabel59)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addComponent(jLabel55)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                                        .addComponent(tutar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel29)
+                        .addGap(386, 386, 386)))
+                .addGap(69, 69, 69))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(547, 547, 547)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addGap(16, 16, 16)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27)
+                    .addComponent(kredi_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel54)
+                        .addComponent(jLabel56)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(taksit_no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel55)
+                            .addComponent(tutar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(odenecek_tutar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel58, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(hesap_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(hesap_id2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel59)))
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton14)
+                            .addComponent(jButton13)
+                            .addComponent(jButton15))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(kredimesaji)
+                        .addGap(34, 34, 34))))
+        );
+
+        jTabbedPane1.addTab("Kredi Borcu Ödeme", jPanel8);
 
         jPanel5.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -478,45 +1082,43 @@ public class MusteriSayfasi extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel43)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(123, 123, 123)
                 .addComponent(jLabel31)
-                .addGap(200, 200, 200)
-                .addComponent(jLabel37)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel41)
-                .addGap(85, 85, 85))
+                .addComponent(jLabel30)
+                .addGap(181, 181, 181))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel32)
-                            .addComponent(jLabel36)))
+                            .addComponent(jLabel36)
+                            .addComponent(jLabel33)
+                            .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel35)
+                            .addComponent(jLabel39, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel33))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel35))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel39))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
+                        .addGap(58, 58, 58)
                         .addComponent(jButton8)))
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(267, 267, 267)
+                        .addComponent(jLabel37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel41)
+                        .addGap(130, 130, 130))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(basvuru_mesaji, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGap(624, 624, 624)
-                                .addComponent(jLabel30)
-                                .addContainerGap(140, Short.MAX_VALUE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel42)
                                     .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(kredihesapismi, javax.swing.GroupLayout.Alignment.LEADING)
@@ -528,65 +1130,60 @@ public class MusteriSayfasi extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addGap(22, 22, 22)
-                                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(yenihesapismi)
-                                            .addComponent(para_birimleri, 0, 100, Short.MAX_VALUE))
+                                        .addComponent(para_birimleri, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel5Layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
+                                        .addComponent(yenihesapismi, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(39, 39, 39)
                                         .addComponent(jLabel44)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(silinecekhesapismi, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(basvuru_mesaji, javax.swing.GroupLayout.PREFERRED_SIZE, 624, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(silinecekhesapismi, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 96, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton7)
-                        .addGap(170, 170, 170)
-                        .addComponent(jButton9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton9)
+                        .addGap(243, 243, 243)
                         .addComponent(jButton10)
-                        .addGap(57, 57, 57))))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel43)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                    .addContainerGap(525, Short.MAX_VALUE)
-                    .addComponent(jLabel42)
-                    .addGap(461, 461, 461)))
+                        .addGap(125, 125, 125))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel31)
+                            .addComponent(jLabel37)
+                            .addComponent(jLabel41))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel39)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(kredi_talep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addComponent(jLabel42))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel31)
-                    .addComponent(jLabel37)
-                    .addComponent(jLabel41))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel30)
-                    .addComponent(jLabel39))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(vade_suresi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel36))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kredi_talep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel33)
+                    .addComponent(faiz_orani, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel38)
                     .addComponent(yenihesapismi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel44)
                     .addComponent(silinecekhesapismi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(vade_suresi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel36)
-                    .addComponent(jLabel40)
-                    .addComponent(para_birimleri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel33)
-                    .addComponent(faiz_orani, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel34)
@@ -594,196 +1191,25 @@ public class MusteriSayfasi extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
-                    .addComponent(aylik_odeme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(aylik_odeme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel40)
+                    .addComponent(para_birimleri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel43)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton8)
-                            .addComponent(jButton7)
-                            .addComponent(jButton9)
-                            .addComponent(jButton10)))
                     .addComponent(kredihesapismi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton9)
+                    .addComponent(jButton10)
+                    .addComponent(jButton7)
+                    .addComponent(jButton8))
+                .addGap(83, 83, 83)
                 .addComponent(basvuru_mesaji, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel5Layout.createSequentialGroup()
-                    .addGap(38, 38, 38)
-                    .addComponent(jLabel42)
-                    .addContainerGap(297, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Talepler", jPanel5);
-
-        jPanel7.setBackground(new java.awt.Color(102, 102, 102));
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1050, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 399, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Aylık Özet Görüntüleme", jPanel7);
-
-        jPanel6.setBackground(new java.awt.Color(102, 102, 102));
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel15.setText("Ad Soyad:");
-
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel16.setText("Telefon:");
-
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel17.setText("Adres:");
-
-        jLabel18.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel18.setText("Eposta:");
-
-        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel19.setText("BİLGİLER");
-
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resimler/information.png"))); // NOI18N
-
-        jButton4.setText("Güncelle");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jLabel21.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel21.setText("ŞİFRE DEĞİŞTİRME");
-
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resimler/password.png"))); // NOI18N
-
-        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel23.setText("Lütfen güncel şifrenizi giriniz:");
-
-        jLabel24.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel24.setText("Lütfen yeni şifreinizi giriniz:");
-
-        jLabel25.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel25.setText("Lütfen yeni şifrenizi tekrar giriniz:");
-
-        jButton5.setText("Değiştir");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
-        bilgi_mesaji2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        bilgi_mesaji2.setForeground(new java.awt.Color(102, 0, 51));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGap(134, 134, 134)
-                .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel21)
-                .addGap(245, 245, 245))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(122, 122, 122)
-                        .addComponent(jButton4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel22)
-                        .addGap(287, 287, 287))))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel17)
-                    .addComponent(jLabel18))
-                .addGap(49, 49, 49)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(adsoyad, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(telefon, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adres, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eposta, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(224, 224, 224)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel25)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(yeni_sifre2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel24)
-                            .addComponent(jLabel23))
-                        .addGap(69, 69, 69)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(guncel_sifre, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(yeni_sifre1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(163, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bilgi_mesaji2, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(172, 172, 172))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel19))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel20)
-                    .addComponent(jLabel22))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(adsoyad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel23)
-                    .addComponent(guncel_sifre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(telefon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel24)
-                    .addComponent(yeni_sifre1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(adres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25)
-                    .addComponent(yeni_sifre2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(eposta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
-                .addGap(26, 26, 26)
-                .addComponent(bilgi_mesaji2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
-        );
-
-        jTabbedPane1.addTab("Bilgileri Güncelleme ve Şifre Değiştirme", jPanel6);
 
         jPanel3.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -852,13 +1278,13 @@ public class MusteriSayfasi extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(411, 411, 411)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(474, 474, 474))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -887,10 +1313,6 @@ public class MusteriSayfasi extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void hesap_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hesap_noActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hesap_noActionPerformed
     private void para_birimlerini_yaz(){
         
         String sorgu="Select * from para_birimleri";
@@ -902,7 +1324,7 @@ public class MusteriSayfasi extends javax.swing.JFrame {
             
             while(res.next()){
                 
-                para_birimleri.addItem(res.getString("para birimi"));
+                para_birimleri.addItem(res.getString("para_birimi"));
                 
                 
             }
@@ -911,335 +1333,6 @@ public class MusteriSayfasi extends javax.swing.JFrame {
         }
  
     }
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-//para cek       
-        String hesapno=this.hesap_no.getText();
-        String tutar=miktar.getText();
-        
-        String sorgu="Select * from hesaplar where kullanici_id = ? and hesap_id = ?";
-        
-        try {
-            db.psqlquery=db.con.prepareStatement(sorgu);
-            db.psqlquery.setInt(1,musteri.getId());
-            db.psqlquery.setString(2,hesapno);
-            
-            ResultSet res=db.psqlquery.executeQuery();
-            
-            if(res.next()){
-                
-                int para_birimi=res.getInt("para_birimi");
-                String hesap_ismi=res.getString("hesap_ismi");
-                sorgu="Select * from para_birimleri where birim_id =?";
-                
-                db.psqlquery=db.con.prepareStatement(sorgu);
-                db.psqlquery.setInt(1,para_birimi);
-                ResultSet res2=db.psqlquery.executeQuery();
-                String para="";
-                while(res2.next()){
-                    para=res2.getString("para birimi");
-                    break;
-                }
-                para_cinsi.setText("Hesap Para Cinsi:"+para);
-                int bakiye=res.getInt("bakiye");
-                
-                String new_sorgu="Insert into hareketler (kullanici_id,kaynak,hedef,işlem,tutar,kaynak_bakiye,hedef_bakiye,tarih) VALUES(?,?,?,?,?,?,?,?)";
-                
-                if(Integer.parseInt(tutar)>bakiye){
-                    
-                    genel_mesaj.setText("Yetersiz bakiye!");
-                    
-                }
-                
-                else{
-                db.psqlquery=db.con.prepareStatement(new_sorgu);
-                db.psqlquery.setInt(1,musteri.getId());
-                db.psqlquery.setString(2,hesap_ismi);
-                db.psqlquery.setString(3,musteri.getKullaniciadi());
-                db.psqlquery.setInt(4,1);
-                db.psqlquery.setInt(5,Integer.parseInt(tutar));
-                db.psqlquery.setInt(6,bakiye);
-                db.psqlquery.setInt(7,0);
-                Date date=new Date();
-                db.psqlquery.setString(8,date.toString());
-                db.psqlquery.executeUpdate();
-                
-                new_sorgu="Update hesaplar set bakiye=? where kullanici_id = ? and hesap_id = ?";
-                
-                db.psqlquery=db.con.prepareStatement(new_sorgu);
-                db.psqlquery.setInt(1, bakiye-Integer.parseInt(tutar));
-                db.psqlquery.setInt(2,musteri.getId());
-                db.psqlquery.setString(3,hesapno);
-                
-                db.psqlquery.executeUpdate();
-                
-                
-                genel_mesaj.setText("Para başarıyla hesaptan çekildi.");
-                
-                
-            }
-            }
-            else{
-                
-                genel_mesaj.setText("Para yatırmak için girdiğiniz hesap numarası bulunamadı.");
-                
-                
-            }
-            
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-    
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        String hesapno=this.hesap_no.getText();
-        String tutar=miktar.getText();
-        
-        String sorgu="Select * from hesaplar where kullanici_id = ? and hesap_id = ?";
-        
-        try {
-            db.psqlquery=db.con.prepareStatement(sorgu);
-            db.psqlquery.setInt(1,musteri.getId());
-            db.psqlquery.setString(2,hesapno);
-            
-            ResultSet res=db.psqlquery.executeQuery();
-            
-            if(res.next()){
-                
-                int para_birimi=res.getInt("para_birimi");
-                String hesap_ismi=res.getString("hesap_ismi");
-                sorgu="Select * from para_birimleri where birim_id =?";
-                
-                db.psqlquery=db.con.prepareStatement(sorgu);
-                db.psqlquery.setInt(1,para_birimi);
-                ResultSet res2=db.psqlquery.executeQuery();
-                String para="";
-                while(res2.next()){
-                    para=res2.getString("para birimi");
-                    break;
-                }
-                para_cinsi.setText("Hesap Para Cinsi:"+para);
-                int bakiye=res.getInt("bakiye");
-                
-                String new_sorgu="Insert into hareketler (kullanici_id,kaynak,hedef,işlem,tutar,kaynak_bakiye,hedef_bakiye,tarih) VALUES(?,?,?,?,?,?,?,?)";
-                
-                db.psqlquery=db.con.prepareStatement(new_sorgu);
-                db.psqlquery.setInt(1,musteri.getId());
-                db.psqlquery.setString(2,musteri.getKullaniciadi());
-                db.psqlquery.setString(3,hesap_ismi);
-                db.psqlquery.setInt(4,2);
-                db.psqlquery.setInt(5,Integer.parseInt(tutar));
-                db.psqlquery.setInt(6,0);
-                db.psqlquery.setInt(7,bakiye);
-                Date date=new Date();
-                db.psqlquery.setString(8,date.toString());
-                db.psqlquery.executeUpdate();
-                
-                new_sorgu="Update hesaplar set bakiye=? where kullanici_id = ? and hesap_id = ?";
-                
-                db.psqlquery=db.con.prepareStatement(new_sorgu);
-                db.psqlquery.setInt(1, bakiye+Integer.parseInt(tutar));
-                db.psqlquery.setInt(2,musteri.getId());
-                db.psqlquery.setString(3,hesapno);
-                
-                db.psqlquery.executeUpdate();
-                
-                
-                genel_mesaj.setText("Para hesaba başarıyla aktarıldı.");
-                
-                
-            }
-            else{
-                
-                genel_mesaj.setText("Para yatırmak için girdiğiniz hesap numarası bulunamadı.");
-                
-                
-            }
-            
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       
-        String kaynak_hesap=ana_hesap.getText();
-        String hedef_hesap=this.hedef_hesap.getText();
-        String miktar=transfer_miktari.getText();
-        
-        String query="Select * from hesaplar where kullanici_id = ? and hesap_id=?";
-        String query2="Select * from hesaplar where kullanici_id = ? and hesap_id =?";
-        
-        try {
-            db.psqlquery=db.con.prepareStatement(query);
-            db.psqlquery.setInt(1,musteri.getId());
-            db.psqlquery.setString(2, kaynak_hesap);
-            
-            ResultSet res=db.psqlquery.executeQuery();
-            
-            db.psqlquery=db.con.prepareStatement(query2);
-            db.psqlquery.setInt(1,musteri.getId());
-            db.psqlquery.setString(2,hedef_hesap);
-            
-            ResultSet res2=db.psqlquery.executeQuery();
-            
-            if(res.next() && res2.next()){
-                
-                String kaynak_hesap_ismi=res.getString("hesap_ismi");
-                String hedef_hesap_ismi=res2.getString("hesap_ismi");
-                int kaynak_para_birimi=res.getInt("para_birimi");
-                int hedef_para_birimi=res2.getInt("para_birimi");
-                int kaynak_hesap_bakiye=res.getInt("bakiye");
-                int hedef_hesap_bakiye=res2.getInt("bakiye");
-                
-                if(kaynak_para_birimi!=hedef_para_birimi){
-                    
-                    int tr_para=0;
-                    
-                    String birim_sorgusu="Select KurDegeri from para_birimleri where birim_id=?";
-                   
-                    db.psqlquery=db.con.prepareStatement(birim_sorgusu);
-                    db.psqlquery.setInt(1,kaynak_para_birimi);
-                    
-                    ResultSet res3=db.psqlquery.executeQuery();
-                    
-                    int kur=0;
-                    while(res3.next()){
-                        
-                        kur=res3.getInt("KurDegeri");
-                        
-                        break;
-                        
-                    }
-                    
-                    tr_para=Integer.parseInt(miktar)*kur;
-                    
-                    birim_sorgusu="Select KurDegeri from para_birimleri where birim_id=?";
-                    
-                    db.psqlquery=db.con.prepareStatement(birim_sorgusu);
-                    db.psqlquery.setInt(1,hedef_para_birimi);
-                    
-                    ResultSet res4=db.psqlquery.executeQuery();
-                    kur=0;
-                    while(res4.next()){
-                        
-                        kur=res4.getInt("KurDegeri");
-                        break;
-                    }
-                    double hedef_para=tr_para/kur;
-                    
-                String new_sorgu="Insert into hareketler (kullanici_id,kaynak,hedef,işlem,tutar,kaynak_bakiye,hedef_bakiye,tarih) VALUES(?,?,?,?,?,?,?,?)";
-                     
-                db.psqlquery=db.con.prepareStatement(new_sorgu);
-                db.psqlquery.setInt(1,musteri.getId());
-                db.psqlquery.setString(2,kaynak_hesap_ismi);
-                db.psqlquery.setString(3,hedef_hesap_ismi);
-                db.psqlquery.setInt(4,3);
-                db.psqlquery.setInt(5,Integer.parseInt(miktar));
-                db.psqlquery.setInt(6,kaynak_hesap_bakiye);
-                db.psqlquery.setInt(7,hedef_hesap_bakiye);
-                Date date=new Date();
-                db.psqlquery.setString(8,date.toString());
-                db.psqlquery.executeUpdate();
-             
-                new_sorgu="Update hesaplar set bakiye = ? where hesap_id = ?";
-                db.psqlquery=db.con.prepareStatement(new_sorgu);
-                db.psqlquery.setInt(1,kaynak_hesap_bakiye-Integer.parseInt(miktar));
-                db.psqlquery.setString(2,kaynak_hesap);
-                
-                db.psqlquery.executeUpdate();
-                
-                new_sorgu="Update hesaplar set bakiye = ? where hesap_id =?";
-                db.psqlquery=db.con.prepareStatement(new_sorgu);
-                db.psqlquery.setInt(1,hedef_hesap_bakiye+(int)hedef_para);
-                db.psqlquery.setString(2,hedef_hesap);
-                
-                db.psqlquery.executeUpdate();
-                        
-                
-                genel_mesaj.setText("Para transferi başarılı bir şekilde gerçekleşti.");
-   
-                    
-                }
-                else{
-                    
-                    int miktarr=Integer.parseInt(miktar);
-                    
-                    if(kaynak_hesap_bakiye<miktarr){
-                        
-                        genel_mesaj.setText("Ana hesapta bu kadar bakiye bulunmuyor.");
-                        
-                    }
-                    else{
-                        
-                         String new_sorgu="Insert into hareketler (kullanici_id,kaynak,hedef,işlem,tutar,kaynak_bakiye,hedef_bakiye,tarih) VALUES(?,?,?,?,?,?,?,?)";
-                     
-                db.psqlquery=db.con.prepareStatement(new_sorgu);
-                db.psqlquery.setInt(1,musteri.getId());
-                db.psqlquery.setString(2,kaynak_hesap_ismi);
-                db.psqlquery.setString(3,hedef_hesap_ismi);
-                db.psqlquery.setInt(4,3);
-                db.psqlquery.setInt(5,miktarr);
-                db.psqlquery.setInt(6,kaynak_hesap_bakiye);
-                db.psqlquery.setInt(7,hedef_hesap_bakiye);
-                Date date=new Date();
-                db.psqlquery.setString(8,date.toString());
-                db.psqlquery.executeUpdate();
-             
-                new_sorgu="Update hesaplar set bakiye = ? where hesap_id = ?";
-                db.psqlquery=db.con.prepareStatement(new_sorgu);
-                db.psqlquery.setInt(1,kaynak_hesap_bakiye-miktarr);
-                db.psqlquery.setString(2,kaynak_hesap);
-                
-                db.psqlquery.executeUpdate();
-                
-                new_sorgu="Update hesaplar set bakiye = ? where hesap_id =?";
-                db.psqlquery=db.con.prepareStatement(new_sorgu);
-                db.psqlquery.setInt(1,hedef_hesap_bakiye+miktarr);
-                db.psqlquery.setString(2,hedef_hesap);
-                
-                db.psqlquery.executeUpdate();
-                        
-                
-                genel_mesaj.setText("Para transferi başarılı bir şekilde gerçekleşti.");
-                
-                    } 
-                }
-            }  
-               
-            
-            else{
-                   genel_mesaj.setText("Kaynak hesap id'si veya hedef hesap id'si bulunamadı!");
-
-            }
-            
-            
-            
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-        
-        
-        
-        
-        
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void vade_suresiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vade_suresiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_vade_suresiActionPerformed
@@ -1493,7 +1586,7 @@ public class MusteriSayfasi extends javax.swing.JFrame {
                 kontrol=true;
                 bakiye=res.getInt("bakiye");
                 hesap_id=res.getInt("hesap_id");
-                para_birimi=res.getString("para birimi");
+                para_birimi=res.getString("parabirimi");
             }
  
         } catch (SQLException ex) {
@@ -1540,6 +1633,818 @@ public class MusteriSayfasi extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton10ActionPerformed
 
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        
+        String[] aylar={"Ocak","Şubat","Mart","Nisan","Mayıs","Haziran","Temmuz","Ağustos","Eylül","Ekim","Kasım","Aralık"};
+        
+        String secilmis_ay=this.aylar.getSelectedItem().toString();
+        int index=-1;
+        for(int i=0;i<12;i++){
+            
+            if(aylar[i].equals(secilmis_ay)){
+                
+                index=i;
+                break;
+            }
+            
+        }
+        
+        model.setRowCount(0);
+        
+        String sorgu="select * from hareketler,kullanici_islemleri where kullanici_islemleri.islem_id=hareketler.işlem and hareketler.kullanici_id= ? and hareketler.tarih =?";
+        
+        try {
+            db.psqlquery=db.con.prepareStatement(sorgu);
+             db.psqlquery.setInt(1,musteri.getId());
+             db.psqlquery.setInt(2,index+1);
+             
+             ResultSet res=db.psqlquery.executeQuery();
+             
+             int tutar=0;
+             String islem_tipi="";
+             
+             
+             while(res.next()){
+               
+                 islem_tipi=res.getString("İslem_tipi");
+                 tutar=res.getInt("tutar");
+                                  
+             
+             int bakiye=0;
+             if(islem_tipi.equals("ParaCekme") || islem_tipi.equals("ParaTransfer")){
+                 
+                 bakiye=res.getInt("kaynak_bakiye");
+  
+             }
+             else if(islem_tipi.equals("ParaYatirma")){
+                 
+                 bakiye=res.getInt("hedef_bakiye");
+                 
+             }
+            
+             Object[] eklenecek={islem_tipi,tutar,bakiye};
+             
+             model.addRow(eklenecek);
+             }
+             
+        } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        String kaynak_hesap=ana_hesap.getText();
+        String hedef_hesap=this.hedef_hesap.getText();
+        String miktar=transfer_miktari.getText();
+
+        String query="Select * from hesaplar where kullanici_id = ? and hesap_id=?";
+        String query2="Select * from hesaplar where kullanici_id = ? and hesap_id =?";
+
+        try {
+            db.psqlquery=db.con.prepareStatement(query);
+            db.psqlquery.setInt(1,musteri.getId());
+            db.psqlquery.setString(2, kaynak_hesap);
+
+            ResultSet res=db.psqlquery.executeQuery();
+
+            db.psqlquery=db.con.prepareStatement(query2);
+            db.psqlquery.setInt(1,musteri.getId());
+            db.psqlquery.setString(2,hedef_hesap);
+
+            ResultSet res2=db.psqlquery.executeQuery();
+
+            if(res.next() && res2.next()){
+
+                String kaynak_hesap_ismi=res.getString("hesap_ismi");
+                String hedef_hesap_ismi=res2.getString("hesap_ismi");
+                int kaynak_para_birimi=res.getInt("para_birimi");
+                int hedef_para_birimi=res2.getInt("para_birimi");
+                int kaynak_hesap_bakiye=res.getInt("bakiye");
+                int hedef_hesap_bakiye=res2.getInt("bakiye");
+
+                if(kaynak_para_birimi!=hedef_para_birimi){
+
+                    int tr_para=0;
+
+                    String birim_sorgusu="Select KurDegeri from para_birimleri where birim_id=?";
+
+                    db.psqlquery=db.con.prepareStatement(birim_sorgusu);
+                    db.psqlquery.setInt(1,kaynak_para_birimi);
+
+                    ResultSet res3=db.psqlquery.executeQuery();
+
+                    int kur=0;
+                    while(res3.next()){
+
+                        kur=res3.getInt("KurDegeri");
+
+                        break;
+
+                    }
+
+                    tr_para=Integer.parseInt(miktar)*kur;
+
+                    int tarih=0;
+
+                    String sorgu="Select * from tarih";
+
+                    db.sqlquery=db.con.createStatement();
+                    res2=db.sqlquery.executeQuery(sorgu);
+                    while(res2.next()){
+                        tarih=res2.getInt("guncel_tarih");
+                    }
+
+                    birim_sorgusu="Select KurDegeri from para_birimleri where birim_id=?";
+
+                    db.psqlquery=db.con.prepareStatement(birim_sorgusu);
+                    db.psqlquery.setInt(1,hedef_para_birimi);
+
+                    ResultSet res4=db.psqlquery.executeQuery();
+                    kur=0;
+                    while(res4.next()){
+
+                        kur=res4.getInt("KurDegeri");
+                        break;
+                    }
+                    double hedef_para=tr_para/kur;
+
+                    String new_sorgu="Insert into hareketler (kullanici_id,kaynak,hedef,işlem,tutar,kaynak_bakiye,hedef_bakiye,tarih) VALUES(?,?,?,?,?,?,?,?)";
+
+                    db.psqlquery=db.con.prepareStatement(new_sorgu);
+                    db.psqlquery.setInt(1,musteri.getId());
+                    db.psqlquery.setString(2,kaynak_hesap_ismi);
+                    db.psqlquery.setString(3,hedef_hesap_ismi);
+                    db.psqlquery.setInt(4,3);
+                    db.psqlquery.setInt(5,Integer.parseInt(miktar));
+                    db.psqlquery.setInt(6,kaynak_hesap_bakiye);
+                    db.psqlquery.setInt(7,hedef_hesap_bakiye);
+                    db.psqlquery.setInt(8,tarih);
+                    db.psqlquery.executeUpdate();
+
+                    new_sorgu="Update hesaplar set bakiye = ? where hesap_id = ?";
+                    db.psqlquery=db.con.prepareStatement(new_sorgu);
+                    db.psqlquery.setInt(1,kaynak_hesap_bakiye-Integer.parseInt(miktar));
+                    db.psqlquery.setString(2,kaynak_hesap);
+
+                    db.psqlquery.executeUpdate();
+
+                    new_sorgu="Update hesaplar set bakiye = ? where hesap_id =?";
+                    db.psqlquery=db.con.prepareStatement(new_sorgu);
+                    db.psqlquery.setInt(1,hedef_hesap_bakiye+(int)hedef_para);
+                    db.psqlquery.setString(2,hedef_hesap);
+
+                    db.psqlquery.executeUpdate();
+
+                    genel_mesaj.setText("Para transferi başarılı bir şekilde gerçekleşti.");
+
+                }
+                else{
+
+                    int miktarr=Integer.parseInt(miktar);
+
+                    if(kaynak_hesap_bakiye<miktarr){
+
+                        genel_mesaj.setText("Ana hesapta bu kadar bakiye bulunmuyor.");
+
+                    }
+                    else{
+
+                        int tarih=0;
+
+                        String sorgu="Select * from tarih";
+
+                        db.sqlquery=db.con.createStatement();
+                        res2=db.sqlquery.executeQuery(sorgu);
+                        while(res2.next()){
+                            tarih=res2.getInt("guncel_tarih");
+                        }
+
+                        String new_sorgu="Insert into hareketler (kullanici_id,kaynak,hedef,işlem,tutar,kaynak_bakiye,hedef_bakiye,tarih) VALUES(?,?,?,?,?,?,?,?)";
+
+                        db.psqlquery=db.con.prepareStatement(new_sorgu);
+                        db.psqlquery.setInt(1,musteri.getId());
+                        db.psqlquery.setString(2,kaynak_hesap_ismi);
+                        db.psqlquery.setString(3,hedef_hesap_ismi);
+                        db.psqlquery.setInt(4,3);
+                        db.psqlquery.setInt(5,miktarr);
+                        db.psqlquery.setInt(6,kaynak_hesap_bakiye);
+                        db.psqlquery.setInt(7,hedef_hesap_bakiye);
+                        db.psqlquery.setInt(8, tarih);
+                        db.psqlquery.executeUpdate();
+
+                        new_sorgu="Update hesaplar set bakiye = ? where hesap_id = ?";
+                        db.psqlquery=db.con.prepareStatement(new_sorgu);
+                        db.psqlquery.setInt(1,kaynak_hesap_bakiye-miktarr);
+                        db.psqlquery.setString(2,kaynak_hesap);
+
+                        db.psqlquery.executeUpdate();
+
+                        new_sorgu="Update hesaplar set bakiye = ? where hesap_id =?";
+                        db.psqlquery=db.con.prepareStatement(new_sorgu);
+                        db.psqlquery.setInt(1,hedef_hesap_bakiye+miktarr);
+                        db.psqlquery.setString(2,hedef_hesap);
+
+                        db.psqlquery.executeUpdate();
+
+                        genel_mesaj.setText("Para transferi başarılı bir şekilde gerçekleşti.");
+
+                    }
+                }
+            }
+
+            else{
+                genel_mesaj.setText("Kaynak hesap id'si veya hedef hesap id'si bulunamadı!");
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //para cek
+        String hesapno=this.hesap_no.getText();
+        String tutar=miktar.getText();
+
+        String sorgu="Select * from hesaplar where kullanici_id = ? and hesap_id = ?";
+
+        try {
+            db.psqlquery=db.con.prepareStatement(sorgu);
+            db.psqlquery.setInt(1,musteri.getId());
+            db.psqlquery.setString(2,hesapno);
+
+            ResultSet res=db.psqlquery.executeQuery();
+
+            if(res.next()){
+
+                int para_birimi=res.getInt("para_birimi");
+                String hesap_ismi=res.getString("hesap_ismi");
+                sorgu="Select * from para_birimleri where birim_id =?";
+
+                db.psqlquery=db.con.prepareStatement(sorgu);
+                db.psqlquery.setInt(1,para_birimi);
+                ResultSet res2=db.psqlquery.executeQuery();
+                String para="";
+                while(res2.next()){
+                    para=res2.getString("para_birimi");
+                    break;
+                }
+                para_cinsi.setText("Hesap Para Cinsi:"+para);
+                int bakiye=res.getInt("bakiye");
+
+                int tarih=0;
+
+                sorgu="Select * from tarih";
+
+                db.sqlquery=db.con.createStatement();
+                res2=db.sqlquery.executeQuery(sorgu);
+                while(res2.next()){
+                    tarih=res2.getInt("guncel_tarih");
+                }
+
+                String new_sorgu="Insert into hareketler (kullanici_id,kaynak,hedef,işlem,tutar,kaynak_bakiye,hedef_bakiye,tarih) VALUES(?,?,?,?,?,?,?,?)";
+
+                if(Integer.parseInt(tutar)>bakiye){
+
+                    genel_mesaj.setText("Yetersiz bakiye!");
+
+                }
+
+                else{
+                    db.psqlquery=db.con.prepareStatement(new_sorgu);
+                    db.psqlquery.setInt(1,musteri.getId());
+                    db.psqlquery.setString(2,hesap_ismi);
+                    db.psqlquery.setString(3,musteri.getKullaniciadi());
+                    db.psqlquery.setInt(4,1);
+                    db.psqlquery.setInt(5,Integer.parseInt(tutar));
+                    db.psqlquery.setInt(6,bakiye);
+                    db.psqlquery.setInt(7,0);
+                    db.psqlquery.setInt(8, tarih);
+                    db.psqlquery.executeUpdate();
+
+                    new_sorgu="Update hesaplar set bakiye=? where kullanici_id = ? and hesap_id = ?";
+
+                    db.psqlquery=db.con.prepareStatement(new_sorgu);
+                    db.psqlquery.setInt(1, bakiye-Integer.parseInt(tutar));
+                    db.psqlquery.setInt(2,musteri.getId());
+                    db.psqlquery.setString(3,hesapno);
+
+                    db.psqlquery.executeUpdate();
+
+                    genel_mesaj.setText("Para başarıyla hesaptan çekildi.");
+
+                }
+            }
+            else{
+
+                genel_mesaj.setText("Para yatırmak için girdiğiniz hesap numarası bulunamadı.");
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        String hesapno=this.hesap_no.getText();
+        String tutar=miktar.getText();
+
+        String sorgu="Select * from hesaplar where kullanici_id = ? and hesap_id = ?";
+
+        try {
+            db.psqlquery=db.con.prepareStatement(sorgu);
+            db.psqlquery.setInt(1,musteri.getId());
+            db.psqlquery.setString(2,hesapno);
+
+            ResultSet res=db.psqlquery.executeQuery();
+
+            if(res.next()){
+
+                int para_birimi=res.getInt("para_birimi");
+                String hesap_ismi=res.getString("hesap_ismi");
+                sorgu="Select * from para_birimleri where birim_id =?";
+
+                db.psqlquery=db.con.prepareStatement(sorgu);
+                db.psqlquery.setInt(1,para_birimi);
+                ResultSet res2=db.psqlquery.executeQuery();
+                String para="";
+                while(res2.next()){
+                    para=res2.getString("para_birimi");
+                    break;
+                }
+                para_cinsi.setText("Hesap Para Cinsi:"+para);
+                int bakiye=res.getInt("bakiye");
+
+                int tarih=0;
+
+                sorgu="Select * from tarih";
+
+                db.sqlquery=db.con.createStatement();
+                res2=db.sqlquery.executeQuery(sorgu);
+                while(res2.next()){
+                    tarih=res2.getInt("guncel_tarih");
+                }
+
+                String new_sorgu="Insert into hareketler (kullanici_id,kaynak,hedef,işlem,tutar,kaynak_bakiye,hedef_bakiye,tarih) VALUES(?,?,?,?,?,?,?,?)";
+
+                db.psqlquery=db.con.prepareStatement(new_sorgu);
+                db.psqlquery.setInt(1,musteri.getId());
+                db.psqlquery.setString(2,musteri.getKullaniciadi());
+                db.psqlquery.setString(3,hesap_ismi);
+                db.psqlquery.setInt(4,2);
+                db.psqlquery.setInt(5,Integer.parseInt(tutar));
+                db.psqlquery.setInt(6,0);
+                db.psqlquery.setInt(7,bakiye);
+                db.psqlquery.setInt(8,tarih);
+                db.psqlquery.executeUpdate();
+
+                new_sorgu="Update hesaplar set bakiye=? where kullanici_id = ? and hesap_id = ?";
+
+                db.psqlquery=db.con.prepareStatement(new_sorgu);
+                db.psqlquery.setInt(1, bakiye+Integer.parseInt(tutar));
+                db.psqlquery.setInt(2,musteri.getId());
+                db.psqlquery.setString(3,hesapno);
+
+                db.psqlquery.executeUpdate();
+
+                genel_mesaj.setText("Para hesaba başarıyla aktarıldı.");
+
+            }
+            else{
+
+                genel_mesaj.setText("Para yatırmak için girdiğiniz hesap numarası bulunamadı.");
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void hesap_noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hesap_noActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hesap_noActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        
+        int kredi_no=Integer.parseInt(this.kredi_no.getText());
+        model2.setRowCount(0);
+        
+        String query="Select * from kredi_taksitleri where kredi_id = ?";
+        
+        try {
+            db.psqlquery=db.con.prepareStatement(query);
+            db.psqlquery.setInt(1,kredi_no);
+            ResultSet res=db.psqlquery.executeQuery();
+            
+            while(res.next()){
+                
+                Object[] obje={res.getInt("taksit_id"),res.getDouble("anapara"),res.getDouble("faiz"),res.getDouble("gecikme"),res.getDouble("guncel_borc")};
+                
+                model2.addRow(obje);
+
+            }
+     
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+   
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void taksitlerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_taksitlerMouseClicked
+        
+        int row=taksitler.getSelectedRow();
+        
+        taksit_no.setText(model2.getValueAt(row,0).toString());
+        
+        String sorgu="Select * from tarih";
+        
+        try {
+            db.sqlquery=db.con.createStatement();
+            
+            ResultSet res=db.sqlquery.executeQuery(sorgu);
+            
+            int guncel_ay=0;
+            while(res.next()){
+                
+                guncel_ay=res.getInt("guncel_tarih");
+            }
+            
+            if(guncel_ay==(int)model2.getValueAt(row,0)){
+                
+                odenecek_tutar.setText(model2.getValueAt(row,4).toString());
+                
+            }
+            else{
+                
+                odenecek_tutar.setText(model2.getValueAt(row,1).toString());
+                
+                
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+  
+    }//GEN-LAST:event_taksitlerMouseClicked
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+    
+        String tarih_sorgu="Select * from tarih";
+        int tarih=-1;
+        try {
+            db.sqlquery=db.con.createStatement();
+            ResultSet res3=db.sqlquery.executeQuery(tarih_sorgu);
+            while(res3.next()){
+                tarih=res3.getInt("guncel_tarih");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
+        int hesap_id=Integer.parseInt(this.hesap_id.getText());
+        ResultSet res=null;
+        String query="Select * from hesaplar where kullanici_id = ? and hesap_id = ?";
+        try {
+            db.psqlquery=db.con.prepareStatement(query);
+            db.psqlquery.setInt(1,musteri.getId());
+            db.psqlquery.setInt(2,hesap_id);
+            
+            res=db.psqlquery.executeQuery();
+            
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        try {
+            if(res.next()){
+                String new_sorgu="Insert into hareketler (kullanici_id,kaynak,hedef,işlem,tutar,kaynak_bakiye,hedef_bakiye,tarih) VALUES(?,?,?,?,?,?,?,?)";
+                int bakiye=res.getInt("bakiye");
+                
+                if(bakiye<Double.parseDouble(odenecek_tutar.getText())){
+                    
+                    kredimesaji.setText("Yetersiz Bakiye!");
+                    
+                    
+                }
+                
+                else{
+                
+                try {
+                    db.psqlquery=db.con.prepareStatement(new_sorgu);
+                    db.psqlquery.setInt(1,musteri.getId());
+                    db.psqlquery.setString(2,musteri.getKullaniciadi());
+                    db.psqlquery.setString(3,"Banka");
+                    db.psqlquery.setInt(4,4);
+                    db.psqlquery.setDouble(5,Double.parseDouble(odenecek_tutar.getText()));
+                    db.psqlquery.setInt(6,bakiye);
+                    db.psqlquery.setInt(7,0);
+                    db.psqlquery.setInt(8,tarih);
+                    db.psqlquery.executeUpdate();
+                    
+                new_sorgu="Update kredi_taksitleri set odenme_durumu=1,guncel_borc=0 where kredi_id = ? and taksit_id = ?";
+                  
+                db.psqlquery=db.con.prepareStatement(new_sorgu);
+                db.psqlquery.setInt(1,Integer.parseInt(kredi_no.getText()));
+                db.psqlquery.setInt(2,Integer.parseInt(taksit_no.getText()) );
+                db.psqlquery.executeUpdate();
+                
+                
+                new_sorgu="Select * from krediler where kredi_id=?";
+                db.psqlquery=db.con.prepareStatement(new_sorgu);
+                db.psqlquery.setInt(1,Integer.parseInt(kredi_no.getText()));
+                ResultSet kredi=db.psqlquery.executeQuery();
+                int odenen=0;
+                
+                while(kredi.next()){
+                    
+                    odenen=kredi.getInt("odenen_borc");
+                    
+                }
+                    System.out.println(odenen);
+                
+                    double odenecek=Double.parseDouble(odenecek_tutar.getText());
+                    int odenecek2=(int)odenecek;
+                    new_sorgu="Update krediler set odenen_borc=? where kredi_id=?";
+                    db.psqlquery=db.con.prepareStatement(new_sorgu);
+                    db.psqlquery.setInt(1,odenen+odenecek2);
+                    db.psqlquery.setInt(2,Integer.parseInt(kredi_no.getText()));
+                    db.psqlquery.executeUpdate();
+                    
+                    new_sorgu="Update hesaplar set bakiye =? where hesap_id=?";
+                    db.psqlquery=db.con.prepareStatement(new_sorgu);
+                    db.psqlquery.setInt(1,bakiye-odenecek2);
+                    db.psqlquery.setInt(2,hesap_id);
+                    db.psqlquery.executeUpdate();
+                    
+                kredimesaji.setText("Ödeme başarılı bir şekilde gerçekleşti.");
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            }
+            else{
+                
+                kredimesaji.setText("Size ait böyle bir hesap bulunamadı.");
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+        
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+        
+        String tarih_sorgu="Select * from tarih";
+        int tarih=-1;
+        try {
+            db.sqlquery=db.con.createStatement();
+            ResultSet res3=db.sqlquery.executeQuery(tarih_sorgu);
+            while(res3.next()){
+                tarih=res3.getInt("guncel_tarih");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        
+        int hesap_id=Integer.parseInt(this.hesap_id2.getText());
+        ResultSet res=null;
+        String query="Select * from hesaplar where kullanici_id = ? and hesap_id = ?";
+        try {
+            db.psqlquery=db.con.prepareStatement(query);
+            db.psqlquery.setInt(1,musteri.getId());
+            db.psqlquery.setInt(2,hesap_id);
+            
+            res=db.psqlquery.executeQuery();
+            
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
+        try {
+            if(res.next()){
+                String new_sorgu="Insert into hareketler (kullanici_id,kaynak,hedef,işlem,tutar,kaynak_bakiye,hedef_bakiye,tarih) VALUES(?,?,?,?,?,?,?,?)";
+                int bakiye=res.getInt("bakiye");
+                
+                if(bakiye<Double.parseDouble(tutar.getText())){
+                    
+                    kredimesaji.setText("Yetersiz Bakiye!");
+                    
+                    
+                }
+                
+                else{
+                
+                try {
+                    db.psqlquery=db.con.prepareStatement(new_sorgu);
+                    db.psqlquery.setInt(1,musteri.getId());
+                    db.psqlquery.setString(2,musteri.getKullaniciadi());
+                    db.psqlquery.setString(3,"Banka");
+                    db.psqlquery.setInt(4,4);
+                    db.psqlquery.setDouble(5,Double.parseDouble(tutar.getText()));
+                    db.psqlquery.setInt(6,bakiye);
+                    db.psqlquery.setInt(7,0);
+                    db.psqlquery.setInt(8,tarih);
+                    db.psqlquery.executeUpdate();
+                    
+                new_sorgu="Update kredi_taksitleri set odenme_durumu=1,guncel_borc=0 where kredi_id = ?";
+                  
+                db.psqlquery=db.con.prepareStatement(new_sorgu);
+                db.psqlquery.setInt(1,Integer.parseInt(kredi_no.getText()));
+                db.psqlquery.executeUpdate();
+                
+                
+                new_sorgu="Select * from krediler where kredi_id=?";
+                db.psqlquery=db.con.prepareStatement(new_sorgu);
+                db.psqlquery.setInt(1,Integer.parseInt(kredi_no.getText()));
+                ResultSet kredi=db.psqlquery.executeQuery();
+                int odenen=0;
+                
+                while(kredi.next()){
+                    
+                    odenen=kredi.getInt("odenen_borc");
+                    
+                }
+                    
+                
+                    double odenecek=Double.parseDouble(tutar.getText());
+                    int odenecek2=(int)odenecek;
+                    new_sorgu="Update krediler set odenen_borc=? where kredi_id=?";
+                    db.psqlquery=db.con.prepareStatement(new_sorgu);
+                    db.psqlquery.setInt(1,odenen+odenecek2);
+                    db.psqlquery.setInt(2,Integer.parseInt(kredi_no.getText()));
+                    db.psqlquery.executeUpdate();
+                    
+                    new_sorgu="Update hesaplar set bakiye =? where hesap_id=?";
+                    db.psqlquery=db.con.prepareStatement(new_sorgu);
+                    db.psqlquery.setInt(1,bakiye-odenecek2);
+                    db.psqlquery.setInt(2,hesap_id);
+                    db.psqlquery.executeUpdate();
+                    
+                kredimesaji.setText("Ödeme başarılı bir şekilde gerçekleşti.");
+                    
+                } catch (SQLException ex) {
+                    Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            }
+            else{
+                
+                kredimesaji.setText("Size ait böyle bir hesap bulunamadı.");
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+ 
+  
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+                String tarih_sorgu="Select * from tarih";
+        int tarih=-1;
+        try {
+            db.sqlquery=db.con.createStatement();
+            ResultSet res3=db.sqlquery.executeQuery(tarih_sorgu);
+            while(res3.next()){
+                tarih=res3.getInt("guncel_tarih");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        String sorgu="Select * from kredi_taksitleri where kredi_id =?";
+        
+        try {
+            db.psqlquery=db.con.prepareStatement(sorgu);
+            db.psqlquery.setString(1,kredi_no.getText());
+            
+            ResultSet taksitler=db.psqlquery.executeQuery();
+            
+            int odenmesi_gereken=0;
+            
+            while(taksitler.next()){
+                
+                if(tarih==taksitler.getInt("taksit_id")){
+                    
+                    odenmesi_gereken+=taksitler.getInt("guncel_borc");
+                    
+                }
+                else{
+                    
+                    odenmesi_gereken+=taksitler.getInt("anapara");
+                    
+                }  
+            }
+            
+            tutar.setText(Integer.toString(odenmesi_gereken));
+        } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+       
+        String query="SELECT * from hesaplar,para_birimleri where kullanici_id = ? and para_birimleri.birim_id=hesaplar.para_birimi";
+        try {
+            db.psqlquery=db.con.prepareStatement(query);
+            db.psqlquery.setInt(1,musteri.getId());
+            ResultSet res=db.psqlquery.executeQuery();
+            
+            int hesap_adeti=0;
+            double toplam_Bakiye=0;
+            
+            while(res.next()){
+                hesap_adeti+=1;
+                String para_birimi=res.getString("para_birimi");
+                
+                if(!para_birimi.equals("TL")){
+                    
+                    toplam_Bakiye+=res.getInt("bakiye")*res.getDouble("KurDegeri");
+                    
+                }
+                else{
+                    
+                    toplam_Bakiye+=res.getInt("bakiye");
+                    
+                }
+                
+                
+            }
+            toplambakiye.setText(Double.toString(toplam_Bakiye));
+            hesapadeti.setText(Integer.toString(hesap_adeti));
+            
+        query="SELECT * FROM krediler,kredi_taksitleri where krediler.kullanici_id= ? and kredi_taksitleri.kredi_id=krediler.kredi_id";  
+        db.psqlquery=db.con.prepareStatement(query);
+        db.psqlquery.setInt(1,musteri.getId());
+        res=db.psqlquery.executeQuery();
+            double anapara=0,faiz=0;
+            double borc=0;
+            
+            while(res.next()){
+                
+               borc=res.getDouble("guncel_borc");
+               anapara=res.getDouble("anapara");
+               faiz=res.getDouble("kredi_taksitleri.faiz");
+            }
+         
+            query="SELECT * FROM krediler,kredi_taksitleri where krediler.kullanici_id= ? and kredi_taksitleri.kredi_id=krediler.kredi_id and odenme_durumu=0";  
+            db.psqlquery=db.con.prepareStatement(query);
+            db.psqlquery.setInt(1,musteri.getId());
+            res=db.psqlquery.executeQuery();
+            double toplam_borc=0;
+            while(res.next()){
+                
+                toplam_borc+=res.getDouble("guncel_borc");
+                
+            }
+            
+            toplamborc.setText(Double.toString(toplam_borc));
+            aylikborc.setText(Double.toString(borc));
+            anaparaaa.setText(Double.toString(anapara));
+            faizzzz.setText(Double.toString(faiz));
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton12ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1579,17 +2484,30 @@ public class MusteriSayfasi extends javax.swing.JFrame {
     private javax.swing.JTextField adres;
     private javax.swing.JTextField adsoyad;
     private javax.swing.JTextField ana_hesap;
+    private javax.swing.JTextField anaparaaa;
+    private javax.swing.JComboBox<String> aylar;
     private javax.swing.JTextField aylik_odeme;
+    private javax.swing.JTextField aylikborc;
     private javax.swing.JLabel basvuru_mesaji;
     private javax.swing.JLabel bilgi_mesaji2;
     private javax.swing.JTextField eposta;
     private javax.swing.JTextField faiz_orani;
+    private javax.swing.JTextField faizzzz;
     private javax.swing.JLabel genel_mesaj;
     private javax.swing.JPasswordField guncel_sifre;
     private javax.swing.JTextField hedef_hesap;
+    private javax.swing.JTextField hesap_id;
+    private javax.swing.JTextField hesap_id2;
     private javax.swing.JTextField hesap_no;
+    private javax.swing.JTextField hesapadeti;
+    private javax.swing.JTable islemler;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1639,35 +2557,63 @@ public class MusteriSayfasi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel50;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel58;
+    private javax.swing.JLabel jLabel59;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel61;
+    private javax.swing.JLabel jLabel62;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField kredi_no;
     private javax.swing.JTextField kredi_talep;
     private javax.swing.JTextField kredihesapismi;
+    private javax.swing.JLabel kredimesaji;
     private javax.swing.JTextField kullanici_Adi;
     private javax.swing.JTextField kullanici_ismi;
     private javax.swing.JTextField kullanici_tcsi;
     private javax.swing.JTextField miktar;
-    private javax.swing.JTextField odeme;
     private javax.swing.JTextField odenecek_miktar;
+    private javax.swing.JTextField odenecek_tutar;
     private javax.swing.JComboBox<String> para_birimleri;
     private javax.swing.JLabel para_cinsi;
     private javax.swing.JTextField silinecekhesapismi;
+    private javax.swing.JTextField taksit_no;
+    private javax.swing.JTable taksitler;
     private javax.swing.JTextField telefon;
+    private javax.swing.JTextField toplambakiye;
+    private javax.swing.JTextField toplamborc;
     private javax.swing.JTextField transfer_miktari;
+    private javax.swing.JTextField tutar;
     private javax.swing.JComboBox<String> vade_suresi;
     private javax.swing.JPasswordField yeni_sifre1;
     private javax.swing.JPasswordField yeni_sifre2;

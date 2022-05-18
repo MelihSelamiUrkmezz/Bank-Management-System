@@ -47,15 +47,26 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
         talepleri_goruntule();
     }
     public void islemleri_goruntule(int kullanici_id){
-        
+        String tarih_sorgu="Select * from tarih";
+                int ana_tarih=-1;
+                 try {
+                    db.sqlquery=db.con.createStatement();
+                     ResultSet res3=db.sqlquery.executeQuery(tarih_sorgu);
+                    while(res3.next()){
+                     ana_tarih=res3.getInt("guncel_tarih");
+                 }
+                 } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+                }
         model3.setRowCount(0);
         ArrayList<CHareketler> hareketler=new ArrayList<>();
         
-        String query="SELECT * FROM hareketler,kullanici_islemleri where hareketler.işlem=kullanici_islemleri.islem_id and hareketler.kullanici_id= ?";
+        String query="SELECT * FROM hareketler,kullanici_islemleri where hareketler.işlem=kullanici_islemleri.islem_id and hareketler.kullanici_id= ? and tarih = ?";
         
         try {
             db.psqlquery=db.con.prepareStatement(query);
             db.psqlquery.setInt(1,kullanici_id);
+            db.psqlquery.setInt(2,ana_tarih);
             
             ResultSet res=db.psqlquery.executeQuery();
             
@@ -69,7 +80,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
                int tutar=res.getInt("tutar");
                int kaynak_bakiye=res.getInt("kaynak_bakiye");
                int hedef_bakiye=res.getInt("hedef_bakiye");
-               String tarih=res.getString("tarih");
+               int tarih=res.getInt("tarih");
                
                hareketler.add(new CHareketler(islem_id, k_id, kaynak, hedef, islem, tutar, kaynak_bakiye, hedef_bakiye, tarih));
                
@@ -156,6 +167,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
                 int hesap_id=res.getInt("hesap_id");
                 String para_birimi=res.getString("para_birimi");
                 double faiz_orani=res.getDouble("faiz_orani");
+                if(onay==-1)
                 talepler.add(new CTalep(id, kullanici_id, islem_tipi, onay, temsilciid, kredimiktari, hesap_id,para_birimi,faiz_orani));       
             }
             
@@ -287,6 +299,12 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
         kalanmiktar = new javax.swing.JTextField();
         jLabel44 = new javax.swing.JLabel();
         talep = new javax.swing.JTextField();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        gelirler = new javax.swing.JTextField();
+        giderler = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -328,7 +346,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(426, 426, 426)
+                .addGap(438, 438, 438)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -413,6 +431,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resimler/refresh.png"))); // NOI18N
 
+        musteri_Tablosu.setBackground(new java.awt.Color(102, 102, 102));
         musteri_Tablosu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -447,7 +466,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
             musteri_Tablosu.getColumnModel().getColumn(8).setResizable(false);
         }
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel15.setText("BİLGİLER");
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -521,11 +540,15 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
                                     .addGroup(jPanel4Layout.createSequentialGroup()
                                         .addGap(59, 59, 59)
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel15)
-                                            .addComponent(g_ad, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                                .addComponent(g_ad, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                                .addGap(0, 0, Short.MAX_VALUE)
+                                                .addComponent(jLabel15)
+                                                .addGap(29, 29, 29))))))
                             .addComponent(guncelleme_silme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(136, Short.MAX_VALUE))
+                        .addContainerGap(186, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(sil, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -534,14 +557,14 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel14)
-                .addGap(468, 468, 468))
+                .addGap(497, 497, 497))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(145, 145, 145)
+                .addGap(146, 146, 146)
                 .addComponent(jLabel15)
-                .addGap(83, 83, 83)
+                .addGap(82, 82, 82)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel16)
                     .addComponent(g_ad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -569,9 +592,9 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
                     .addComponent(guncelle))
                 .addGap(39, 39, 39)
                 .addComponent(message2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
+                .addContainerGap()
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -584,7 +607,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
 
         image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resimler/add-user.png"))); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel6.setText("Müşteri Ekleme");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -633,9 +656,9 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(129, 129, 129))
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(316, 316, 316)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(316, 316, 316)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -655,13 +678,13 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
                                 .addComponent(tcno, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(telefonno, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(adsoyad, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(image, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(image, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(454, 454, 454)
+                        .addGap(95, 95, 95)
                         .addComponent(jLabel6)))
-                .addGap(105, 186, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(105, 236, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -704,7 +727,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
                         .addGap(77, 77, 77)
                         .addComponent(message4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton1))
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Müşteri Ekleme", jPanel3);
@@ -807,7 +830,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(55, Short.MAX_VALUE))
+                                .addContainerGap(105, Short.MAX_VALUE))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -927,7 +950,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
 
             },
             new String [] {
-                "İşlem No", "Kullanıcı_Id", "Kaynak", "Hedef", "İşlem", "Tutar", "Kaynak Bakiye", "Hedef Bakiye", "Tarih"
+                "İşlem No", "Kullanıcı_Id", "Kaynak", "Hedef", "İşlem", "Tutar", "Kaynak Bakiye", "Hedef Bakiye", "Güncel Ay"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -990,7 +1013,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
         jLabel40.setText("Güncel Faiz Oranı:");
 
         jLabel42.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel42.setText("Kredi Veriliş Tarihi:");
+        jLabel42.setText("Güncel Kredi Ayı:");
 
         verilis_tarihi.setEditable(false);
 
@@ -1001,6 +1024,58 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
 
         jLabel44.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel44.setText("Kullanıcının Talep Ettiği Miktar:");
+
+        jPanel10.setBackground(new java.awt.Color(51, 51, 51));
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("Müşteri Genel Durumu");
+
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("Gelirler:");
+
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setText("Giderler:");
+
+        gelirler.setEditable(false);
+
+        giderler.setEditable(false);
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(jLabel22))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel24))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(giderler, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                            .addComponent(gelirler))))
+                .addContainerGap(115, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel22)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(gelirler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(giderler, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36))
+        );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -1036,25 +1111,34 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
                             .addComponent(guncel_faiz, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(verilis_tarihi, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(68, 68, 68))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(254, 254, 254)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bilgi_mesaj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(jLabel34)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(254, 254, 254)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bilgi_mesaj, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(201, 201, 201)
+                        .addComponent(jLabel34)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(150, 150, 150))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)))
                 .addComponent(bilgi_mesaj)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -1115,10 +1199,10 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jTabbedPane1)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(397, 397, 397)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(384, 384, 384))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1291,7 +1375,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
                 
                 talep_isim.setText(res2.getString("AdSoyad"));
                 talep_tc.setText(res2.getString("TcNo"));
-   
+                
             }
         
         } catch (SQLException ex) {
@@ -1350,17 +1434,195 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
                
             }
             else{
-            
+            int hesapekleme=2;
+            int hesapsilme=1;
+            int kredi=3;
+            int islem_id=(int)model2.getValueAt(row, 0);
             int k_id=(int)model2.getValueAt(row,1);
-            
-            String sorgu="Update talepler set onay = ? where kullanici_id = ?";            
+            int t_id=(int)model2.getValueAt(row,2);
+            String islem=model2.getValueAt(row,3).toString();
+            String sorgu="Update talepler set onay = ? where kullanici_id = ? and id = ?";            
             try {
                 db.psqlquery=db.con.prepareStatement(sorgu);
                 db.psqlquery.setInt(1,1);
                 db.psqlquery.setInt(2,k_id);
+                db.psqlquery.setInt(3,islem_id);
                 db.psqlquery.executeUpdate();
                 talepleri_goruntule();
-                
+                if(islem.equals("HesapEkleme")){
+                    
+                    String query2="Select * from talepler,para_birimleri where kullanici_id = ? and onay = 1 and para_birimleri.para_birimi=talepler.para_birimi and talepler.id = ?";
+                    db.psqlquery=db.con.prepareStatement(query2);
+                    db.psqlquery.setInt(1, k_id);
+                    db.psqlquery.setInt(2,islem_id);
+                    ResultSet res=db.psqlquery.executeQuery();
+                    String hesap_ismi="";
+                    int para_birimi=0;
+                    while(res.next()){
+                        hesap_ismi=res.getString("hesap_ismi");
+                        para_birimi=res.getInt("birim_id");  
+                    }
+
+                    String query="Insert into hesaplar (kullanici_id,para_birimi,bakiye,hesap_ismi) VALUES(?,?,?,?)";
+                    
+                    db.psqlquery=db.con.prepareStatement(query);
+                    db.psqlquery.setInt(1, k_id);
+                    db.psqlquery.setInt(2,para_birimi);
+                    db.psqlquery.setInt(3,0);
+                    db.psqlquery.setString(4,hesap_ismi);
+                    
+                    db.psqlquery.executeUpdate();
+                    
+                    talep_mesaj.setText(k_id+" numaralı müşterinin hesap açma talebi onaylanmıştır.");
+                    model2.removeRow(row);
+                }
+                else if(islem.equals("HesapSilme")){
+                    
+                    String query="Delete from hesaplar where hesap_id = ?";
+                    
+                    String query2="Select * from talepler where id = ?";
+                    db.psqlquery=db.con.prepareStatement(query2);
+                    db.psqlquery.setInt(1,islem_id);
+                    ResultSet res=db.psqlquery.executeQuery();
+                    int hesap_id=-1;
+                    while(res.next()){
+                        hesap_id=res.getInt("hesap_id");
+                    }
+                    db.psqlquery=db.con.prepareStatement(query);
+                    db.psqlquery.setInt(1,hesap_id);
+                    db.psqlquery.executeUpdate();
+                    
+                    talep_mesaj.setText(k_id+" numaralı müşterinin hesap silme talebi onaylanmıştır.");
+                }
+                else{
+                    int vade1;
+                    String query="Select * from talepler where id = ?";
+                    db.psqlquery=db.con.prepareStatement(query);
+                    db.psqlquery.setInt(1,islem_id);
+                    ResultSet res=db.psqlquery.executeQuery();
+                    int kredi_miktari=0;
+                    double faiz_orani=0;
+                    int hesap_id=0;
+                    while(res.next()){
+                        kredi_miktari=res.getInt("KrediMiktari");
+                        faiz_orani=res.getDouble("faiz_orani");
+                        hesap_id=res.getInt("hesap_id");
+                    }
+                    query="Select bakiye from hesaplar where hesap_id = "+hesap_id;
+                    
+                    db.sqlquery=db.con.createStatement();
+                    
+                    res=db.sqlquery.executeQuery(query);
+                    
+                    int bakiye=0;
+                    
+                    while(res.next()){
+                        
+                        bakiye=res.getInt("bakiye");
+                        
+                    }
+
+                    query="Update hesaplar set bakiye = ? where hesap_id = ?";
+                    
+                    db.psqlquery=db.con.prepareStatement(query);
+                    db.psqlquery.setInt(1,bakiye+kredi_miktari);
+                    db.psqlquery.setInt(2,hesap_id);
+                    
+                    db.psqlquery.executeUpdate();
+                    
+                    query="Select * from  krediorani where kredi_orani = ?";
+                    
+                    db.psqlquery=db.con.prepareStatement(query);
+                    db.psqlquery.setDouble(1, faiz_orani);
+                    res=db.psqlquery.executeQuery();
+                    vade1=0;
+                    while(res.next()){
+                        vade1=res.getInt("id");
+                    }
+                    int vade=-1;
+                    if(vade1==0){
+                        vade=4;
+                    }
+                    else if (vade1==1) {
+                        vade=8;
+                        
+                    }
+                    else if(vade1==2){
+                        vade=12;
+                    }
+                    else if(vade1==3){
+                        vade=24;
+                    }
+                    
+                    talep_mesaj.setText("Kredi istediğiniz hesaba aktarılmıştır. İyi günler dileriz!");
+                    
+                    query="Insert into krediler (kullanici_id,temsilci_id,kredi_miktari,faiz,vade_suresi,odenen_borc,gecikme_adeti,guncel_ay) VALUES(?,?,?,?,?,?,?,?)";
+                    
+                    db.psqlquery=db.con.prepareStatement(query);
+                    db.psqlquery.setInt(1, k_id);
+                    db.psqlquery.setInt(2,t_id);
+                    db.psqlquery.setInt(3,kredi_miktari);
+                    db.psqlquery.setDouble(4,faiz_orani);
+                    db.psqlquery.setInt(5,vade);
+                    db.psqlquery.setInt(6, 0);
+                    db.psqlquery.setInt(7,0);
+                    db.psqlquery.setInt(8,1);
+                    db.psqlquery.executeUpdate();
+                    
+                    query="Select * from krediler where kullanici_id = "+k_id;
+                    
+                    db.sqlquery=db.con.createStatement();
+                    
+                    ResultSet res5=db.sqlquery.executeQuery(query);
+                    
+                    int kredi_id=-1;
+                    while(res5.next()){
+                        
+                        kredi_id=res5.getInt("kredi_id");
+                        
+                    }
+
+                for(int i=1;i<=vade;i++){
+                    
+                    query="Insert into kredi_taksitleri(kredi_id,guncel_ay,guncel_borc,odenme_durumu,anapara,faiz)VALUES(?,?,?,?,?,?)";
+                    db.psqlquery=db.con.prepareStatement(query);
+                    db.psqlquery.setInt(1,kredi_id);
+                    db.psqlquery.setDouble(2,i);
+                    db.psqlquery.setDouble(3,((kredi_miktari*faiz_orani)+kredi_miktari)/vade);
+                    db.psqlquery.setDouble(4,0);
+                    db.psqlquery.setDouble(5,kredi_miktari/vade);
+                    db.psqlquery.setDouble(6,kredi_miktari*faiz_orani/vade);
+                    
+                    db.psqlquery.executeUpdate();
+                }
+                 String tarih_sorgu="Select * from tarih";
+                int tarih=-1;
+                 try {
+                    db.sqlquery=db.con.createStatement();
+                     ResultSet res3=db.sqlquery.executeQuery(tarih_sorgu);
+                    while(res3.next()){
+                     tarih=res3.getInt("guncel_tarih");
+                 }
+                 } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                String new_sorgu="Insert into hareketler (kullanici_id,kaynak,hedef,işlem,tutar,kaynak_bakiye,hedef_bakiye,tarih) VALUES(?,?,?,?,?,?,?,?)";
+           
+
+                    db.psqlquery=db.con.prepareStatement(new_sorgu);
+                    db.psqlquery.setInt(1,kullanici_id);
+                    db.psqlquery.setString(2,"Banka");
+                    db.psqlquery.setString(3,Integer.toString(hesap_id));
+                    db.psqlquery.setInt(4,1);
+                    db.psqlquery.setInt(5,kredi_miktari);
+                    db.psqlquery.setInt(6,0);
+                    db.psqlquery.setInt(7,bakiye);
+                    db.psqlquery.setInt(8,tarih);
+                    db.psqlquery.executeUpdate();
+      
+                }
+              
+
             } catch (SQLException ex) {
                 Logger.getLogger(TemsilciSayfasi.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1405,6 +1667,17 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
       
+         String tarih_sorgu="Select * from tarih";
+                int ana_tarih=-1;
+                 try {
+                    db.sqlquery=db.con.createStatement();
+                     ResultSet res3=db.sqlquery.executeQuery(tarih_sorgu);
+                    while(res3.next()){
+                     ana_tarih=res3.getInt("guncel_tarih");
+                 }
+                 } catch (SQLException ex) {
+            Logger.getLogger(MusteriSayfasi.class.getName()).log(Level.SEVERE, null, ex);
+                }
         String sorgu="Select * from musteri where TcNo = ?";
         
         try {
@@ -1440,7 +1713,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
         
         
             
-        sorgu="Select * from kredi_bilgileri where kullanici_id= ?";
+        sorgu="Select * from krediler where kullanici_id= ?";
         db.psqlquery=db.con.prepareStatement(sorgu);
         db.psqlquery.setInt(1, id);
         ResultSet set3=db.psqlquery.executeQuery();
@@ -1452,24 +1725,12 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
             kredi_bilgisi.setText("Var");
             
             int talep2=set3.getInt("kredi_miktari");
-            int odenen_miktar=set3.getInt("odenen_miktar");
-            String tarih=set3.getString("verilis_tarihi");
+            int odenen_miktar=set3.getInt("odenen_borc");
+            String tarih=set3.getString("guncel_ay");
             talep.setText(Integer.toString(talep2));
             odenen.setText(Integer.toString(odenen_miktar));
-           
             verilis_tarihi.setText(tarih);
-            
-            sorgu="Select * from krediorani";
-            
-            db.sqlquery=db.con.createStatement();
-            
-            ResultSet faiz=db.sqlquery.executeQuery(sorgu);
-            double faiz_orani=0;
-            while(faiz.next()){
-                
-                faiz_orani=faiz.getDouble("kredi_orani");
-                break;
-            }
+            double faiz_orani=set3.getDouble("faiz");  
             guncel_faiz.setText(Double.toString(faiz_orani));
             double toplam_borc=talep2+(talep2*faiz_orani);
             toplamkrediborcu.setText(Double.toString(toplam_borc));
@@ -1485,6 +1746,33 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
             verilis_tarihi.setText("------");
             odenen.setText("------");
         }
+        
+        sorgu="SELECT * FROM hareketler,kullanici_islemleri where kullanici_id = ? and hareketler.işlem=kullanici_islemleri.islem_id and tarih = ?";
+        db.psqlquery=db.con.prepareStatement(sorgu);
+        db.psqlquery.setInt(1,id);
+        db.psqlquery.setInt(2,ana_tarih);
+        ResultSet hareketler=db.psqlquery.executeQuery();
+        
+        double gel=0,git=0;
+        
+        while(hareketler.next()){
+            
+            if(hareketler.getString("Islem_tipi").equals("ParaCekme") || hareketler.getString("Islem_tipi").equals("BorcOdeme")){
+                
+                git+=hareketler.getInt("tutar");
+                
+            }
+            
+            else if(hareketler.getString("Islem_tipi").equals("ParaYatirma")){
+                
+                
+                gel+=hareketler.getInt("tutar");
+
+            }
+        }
+        giderler.setText(Double.toString(git));
+        gelirler.setText(Double.toString(gel));
+        
         }
         else{
             bilgi_mesaj.setText("Girilen TC'ye ait bir müşteri bulunamadı.");
@@ -1544,6 +1832,8 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
     private javax.swing.JTextField g_eposta;
     private javax.swing.JTextField g_tc;
     private javax.swing.JTextField g_tel;
+    private javax.swing.JTextField gelirler;
+    private javax.swing.JTextField giderler;
     private javax.swing.JTextField guncel_faiz;
     private javax.swing.JButton guncelle;
     private javax.swing.JLabel guncelleme_silme;
@@ -1568,6 +1858,9 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -1595,6 +1888,7 @@ public class TemsilciSayfasi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

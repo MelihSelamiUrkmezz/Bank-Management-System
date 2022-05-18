@@ -13,9 +13,9 @@ public class CHareketler {
       private  int tutar;
       private  int kaynak_bakiye;
       private  int hedef_bakiye;
-      private  String tarih;
+      private  int tarih;
 
-    public CHareketler(int islem_id, int k_id,String kaynak,String hedef, String işlem, int tutar, int kaynak_bakiye, int hedef_bakiye, String tarih) {
+    public CHareketler(int islem_id, int k_id,String kaynak,String hedef, String işlem, int tutar, int kaynak_bakiye, int hedef_bakiye, int tarih) {
         this.islem_id = islem_id;
         this.k_id = k_id;
         this.kaynak = kaynak;
@@ -91,11 +91,11 @@ public class CHareketler {
         this.hedef_bakiye = hedef_bakiye;
     }
 
-    public String getTarih() {
+    public int getTarih() {
         return tarih;
     }
 
-    public void setTarih(String tarih) {
+    public void setTarih(int tarih) {
         this.tarih = tarih;
     }
                

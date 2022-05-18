@@ -231,7 +231,12 @@ public class GirisSayfasi extends javax.swing.JFrame {
                     
                     CMudur mudur=new CMudur(id, AdSoyad, telefon, tcno, adres, email, k2_adi, k_sifre);
                     
-                    l_mesaj.setText("Müdür girişi başarılı.");
+                    MudurSayfasi frame=new MudurSayfasi(mudur);
+                   
+                    setVisible(false);
+                    
+                    frame.setVisible(true);
+                    
                     
                 }
                 else{
