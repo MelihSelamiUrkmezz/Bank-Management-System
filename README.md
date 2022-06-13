@@ -47,7 +47,7 @@ Projenin Örnek Görselleri
 
 ## Temsilci Paneli Örnek Görseli
 
-![Temsilci Paneli](https://github.com/MelihSelamiUrkmezz/BankSystem/blob/master/proje_resimleri/temsilci.png)
+![Temsilci Paneli](https://github.com/MelihSelamiUrkmezz/BankSystem/blob/master/proje_resimleri/Ekran%20G%C3%B6r%C3%BCnt%C3%BCs%C3%BC%20(494).png)
 
 ## Müşteri Paneli Örnek Görseli
 
